@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticket-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ticket
+  template:
+    metadata:
+      labels:
+        app: ticket
+    spec:
+      containers:
+        - name: ticket
+          image: thalapathy-ticket-app:latest     # local image name
+          imagePullPolicy: IfNotPresent            # <-- THIS LINE IS IMPORTANT
+          ports:
+            - containerPort: 5000
+
