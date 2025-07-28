@@ -1,21 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ticket-app
+  name: hello-node
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: ticket
+      app: hello
   template:
     metadata:
       labels:
-        app: ticket
+        app: hello
     spec:
       containers:
-        - name: ticket
-          image: thalapathy-ticket-app:latest     # local image name
-          imagePullPolicy: IfNotPresent            # <-- THIS LINE IS IMPORTANT
-          ports:
-            - containerPort: 5000
+      - name: hello-node
+        image: k8s.gcr.io/echoserver:1.10
+        ports:
+        - containerPort: 8080
 
