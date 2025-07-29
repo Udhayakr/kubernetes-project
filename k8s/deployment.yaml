@@ -1,20 +1,22 @@
+# k8s-manifests/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-node
+  name: ticket-app
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: hello
+      app: ticket
   template:
     metadata:
       labels:
-        app: hello
+        app: ticket
     spec:
       containers:
-      - name: hello-node
-        image: k8s.gcr.io/echoserver:1.10
+      - name: ticket
+        image: yourdockerhub/thalapathy-ticket-app:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 5000
+
 
